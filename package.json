@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/index.js",
-    "test": "NODE_ENV=test mocha 'src/**/*.spec.js'"
+    "test": "NODE_ENV=test mocha 'lib/**/*.spec.js'"
   },
   "dependencies": {
     "fast-csv": "^2.4.0",
