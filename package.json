@@ -1,16 +1,26 @@
 {
   "name": "cmsc265-set-document-image-processing",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0",
   "description": "CMSC 265 - SET Document Image Processing",
   "main": "index.js",
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecsnavarretemit/cmsc265-set-document-image-processing-js.git"
+  },
   "author": "Exequiel Ceasar Navarrete <esnavarrete1@up.edu.ph>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "NODE_ENV=test mocha 'src/**/*.spec.js'"
+    "start": "node index.js",
+    "test": "NODE_ENV=test mocha 'lib/**/*.spec.js'"
+  },
+  "bin": {
+    "process-set-images": "./cli.js"
   },
   "dependencies": {
+    "commander": "^2.9.0",
+    "fast-csv": "^2.4.0",
+    "lodash.assign": "^4.2.0",
+    "lodash.chunk": "^4.2.0",
     "opencv": "^6.0.0"
   },
   "devDependencies": {

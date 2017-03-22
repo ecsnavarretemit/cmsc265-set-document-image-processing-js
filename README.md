@@ -15,11 +15,19 @@ Dependencies of this project can be installed via [NPM](https://www.npmjs.com/) 
 It is recommended to use Yarn instead of NPM due to the assurance that the dependencies that will be installed is the same across all machines.
 Although there is the `npm shrinkwrap` which aims to achieve what is stated above, read this about [yarn.lock and npm shrinkwrap](https://yarnpkg.com/en/docs/yarn-lock).
 
+Installing dependencies via Yarn is simply as running the command `yarn install`. Installing dependencies NPM is also as simple as running the command `npm install`.
+
 _Note: Make sure that Python 2.x.x is present on your path since OpenCV bindings for Node.js needs this in order for it to be compiled._
 
 ## Running the Program
 
 This program can be run using the command `yarn start` if you use Yarn or `npm start` if you use NPM.
+The output image files will be under the `out` directory generated at the project root.
+
+This can also be installed as executable script using the command `npm install -g`. After installation which could take some time,
+You may now be able to use the command `process-set-images <input_images_dir> <output_directory> <coords_data_file>`.
+For more info, you can type: `process-set-images --help`.
+
 
 ## Running Tests
 

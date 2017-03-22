@@ -6,7 +6,9 @@
   ],
   "rules": {
     "no-console": "off",
-    "import/no-extraneous-dependencies": "off"
+    "import/no-extraneous-dependencies": "off",
+    "no-multiple-empty-lines": "off",
+    "array-bracket-spacing": "off"
   },
   "env": {
     "mocha": true
