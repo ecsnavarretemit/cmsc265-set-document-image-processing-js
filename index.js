@@ -20,7 +20,16 @@ const resolvedImgsPath = path.join(process.cwd(), 'assets/img/forms');
 const resolvedDistPath = path.join(process.cwd(), 'out');
 
 // resolve the path to the coordinates CSV file
-const coordsDataFile = path.join(process.cwd(), 'assets/docs/fields39.csv')
+const coordsDataFile = path.join(process.cwd(), 'assets/docs/fields39.csv');
+
+// processing settings variables
+const diameter = 16;
+const shapeThickness = 2;
+const shapeColors = {
+  blank: [0, 255, 0],
+  crossed: [255, 0, 0],
+  shaded: [0, 0, 255]
+};
 
 Promise
   .all([
@@ -42,15 +51,6 @@ Promise
     const kernel = cv.imgproc.getStructuringElement(1, [5, 5]);
     binaryImage.erode(1, kernel);
     binaryImage.dilate(1, kernel);
-
-    // processing settings variables
-    const diameter = 16;
-    const shapeThickness = 2;
-    const shapeColors = {
-      blank: [0, 255, 0],
-      crossed: [255, 0, 0],
-      shaded: [0, 0, 255]
-    };
 
     const statistics = {
       SA: 0,
