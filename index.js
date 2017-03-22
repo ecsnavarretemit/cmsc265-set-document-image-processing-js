@@ -8,7 +8,6 @@
 const fs = require('fs');
 const path = require('path');
 const cv = require('opencv');
-const csv = require('fast-csv');
 const fetchAll = require('./lib/fetch-all');
 const reader = require('./lib/reader');
 const readCoordsFromFile = require('./lib/read-coords-from-file');
@@ -28,28 +27,30 @@ const shapeThickness = 2;
 const shapeColors = {
   blank: [0, 255, 0], // green
   crossed: [255, 0, 0], // blue
-  shaded: [0, 0, 255] // red
+  shaded: [0, 0, 255], // red
 };
 
 fetchAll(resolvedImgsPath)
-  .then(images => {
+  .then((images) => {
     // create an array of image promises
     const promises = images.map(imagePath => reader(imagePath));
 
     // process all the promises using the all method of Promise object
     return Promise.all(promises);
   })
-  .then(images => {
+  .then((images) => {
     // read the coordinates and re-resolve the casted images
-    return Promise.all([
+    const retPromise = Promise.all([
       Promise.resolve(images),
-      readCoordsFromFile(coordsDataFile, { delimiter: ' ' })
-    ])
+      readCoordsFromFile(coordsDataFile, { delimiter: ' ' }),
+    ]);
+
+    return retPromise;
   })
-  .then(values => {
+  .then((values) => {
     const [images, coordsData] = values;
 
-    images.forEach(image => {
+    images.forEach((image) => {
       const { cvImage, imagePath } = image;
 
       // convert to grayscale
@@ -57,7 +58,7 @@ fetchAll(resolvedImgsPath)
       grayImg.convertGrayscale();
 
       // perform thresholding using Otsu
-      const binaryImage = grayImg.threshold(0, 255, "Binary", "Otsu");
+      const binaryImage = grayImg.threshold(0, 255, 'Binary', 'Otsu');
 
       // emulate morph_open since node-opencv doesn't support it
       const kernel = cv.imgproc.getStructuringElement(0, [5, 5]);
@@ -71,12 +72,12 @@ fetchAll(resolvedImgsPath)
         NAD: 0,
         SLD: 0,
         D: 0,
-        SD: 0
+        SD: 0,
       };
 
       const statisticsKeys = Object.keys(statistics);
 
-      coordsData.forEach(row => {
+      coordsData.forEach((row) => {
         row.forEach((coords, idx) => {
           const [x, y] = coords;
           let isShaded = false;
@@ -88,15 +89,15 @@ fetchAll(resolvedImgsPath)
           const start = x - (diameter / 2);
           const end = y - (diameter / 2);
 
-          //crop the image to the specific region
-          roi = binaryImage.crop(start, end, diameter, diameter);
+          // crop the image to the specific region
+          const roi = binaryImage.crop(start, end, diameter, diameter);
 
           // opencv's mean function processes all 4 channels of the image
           // and we need only the first channel since we are processing binary images
           // and discard all the channels other than the first channel
           //
           // This to determine how much black pixels are present on the cropped area
-          [channel1, , , ] = roi.mean();
+          const [channel1, , , ] = roi.mean();
 
           // override the default rectangle color based on certain range of values
           if (channel1 < 69) {
@@ -114,7 +115,7 @@ fetchAll(resolvedImgsPath)
 
           // add one to the matched stat value
           if (isShaded) {
-            statistics[statKey]++;
+            statistics[statKey] += 1;
           }
 
           // draw rectangle in the original image
@@ -129,7 +130,7 @@ fetchAll(resolvedImgsPath)
 
       // assemble the contents that will be written to the file
       let fileContents = '';
-      statisticsKeys.forEach(key => {
+      statisticsKeys.forEach((key) => {
         fileContents += `${key}=${statistics[key]}\n`;
       });
 
