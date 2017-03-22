@@ -14,6 +14,7 @@
     "test": "NODE_ENV=test mocha 'lib/**/*.spec.js'"
   },
   "dependencies": {
+    "commander": "^2.9.0",
     "fast-csv": "^2.4.0",
     "lodash.chunk": "^4.2.0",
     "opencv": "^6.0.0"
