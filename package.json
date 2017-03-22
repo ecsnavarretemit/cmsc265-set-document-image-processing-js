@@ -13,6 +13,9 @@
     "start": "node src/index.js",
     "test": "NODE_ENV=test mocha 'lib/**/*.spec.js'"
   },
+  "bin": {
+    "process-set-images": "./cli.js"
+  },
   "dependencies": {
     "commander": "^2.9.0",
     "fast-csv": "^2.4.0",
