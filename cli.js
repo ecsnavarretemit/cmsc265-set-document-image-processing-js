@@ -18,7 +18,7 @@ let resolvedCoordsDataFile;
 
 // assemble the program
 program
-  .version('1.0.0-alpha1')
+  .version('1.0.0')
   .arguments('<input_images_dir> <output_directory> <coords_data_file>')
   .action((inputDirectory, outputDirectory, coordsDataFile) => {
     resolvedInputDirectory = path.join(process.cwd(), inputDirectory);

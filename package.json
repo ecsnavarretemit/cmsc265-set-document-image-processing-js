@@ -1,6 +1,6 @@
 {
   "name": "cmsc265-set-document-image-processing",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0",
   "description": "CMSC 265 - SET Document Image Processing",
   "main": "index.js",
   "repository": {
