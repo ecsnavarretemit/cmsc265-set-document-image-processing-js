@@ -10,7 +10,7 @@
   "author": "Exequiel Ceasar Navarrete <esnavarrete1@up.edu.ph>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node index.js",
     "test": "NODE_ENV=test mocha 'lib/**/*.spec.js'"
   },
   "bin": {
