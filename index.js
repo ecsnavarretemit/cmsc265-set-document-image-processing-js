@@ -60,7 +60,7 @@ fetchAll(resolvedImgsPath)
       const binaryImage = grayImg.threshold(0, 255, "Binary", "Otsu");
 
       // emulate morph_open since node-opencv doesn't support it
-      const kernel = cv.imgproc.getStructuringElement(1, [5, 5]);
+      const kernel = cv.imgproc.getStructuringElement(0, [5, 5]);
       binaryImage.erode(1, kernel);
       binaryImage.dilate(1, kernel);
 
