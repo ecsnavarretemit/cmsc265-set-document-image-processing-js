@@ -32,6 +32,10 @@ const shapeColors = {
 
 fetchAll(resolvedImgsPath)
   .then((images) => {
+    // show log info
+    console.log(`Reading images from the directory: ${resolvedImgsPath}`);
+    console.log(`Saving processed files to: ${resolvedDistPath}`);
+
     // create an array of image promises
     const promises = images.map(imagePath => reader(imagePath));
 
@@ -52,6 +56,9 @@ fetchAll(resolvedImgsPath)
 
     images.forEach((image) => {
       const { cvImage, imagePath } = image;
+
+      // show log info
+      console.log(`Processing Image: ${imagePath}`);
 
       // convert to grayscale
       const grayImg = cvImage.copy();
@@ -137,6 +144,9 @@ fetchAll(resolvedImgsPath)
       // save the statistics in a text file
       fs.writeFileSync(`${resolvedDistPath}/${imageBasename}.txt`, fileContents);
     });
+
+    // show log info
+    console.log(`Processing images done. Output files on: ${resolvedDistPath}`);
   })
   .catch(err => console.error(err))
   ;
