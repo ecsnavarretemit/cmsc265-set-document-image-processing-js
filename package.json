@@ -1,6 +1,6 @@
 {
   "name": "cmsc265-set-document-image-processing",
-  "version": "1.0.0-alpha1",
+  "version": "1.0.0",
   "description": "CMSC 265 - SET Document Image Processing",
   "main": "index.js",
   "repository": {
@@ -10,7 +10,7 @@
   "author": "Exequiel Ceasar Navarrete <esnavarrete1@up.edu.ph>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js",
+    "start": "node index.js",
     "test": "NODE_ENV=test mocha 'lib/**/*.spec.js'"
   },
   "bin": {
