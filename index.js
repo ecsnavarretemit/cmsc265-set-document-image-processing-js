@@ -28,7 +28,8 @@ Promise
     readCoordsFromFile(coordsDataFile, { delimiter: ' ' })
   ])
   .then((values) => {
-    const [cvImage, coordsData] = values;
+    const [image, coordsData] = values;
+    const { cvImage, imagePath } = image;
 
     // convert to grayscale
     const grayImg = cvImage.copy();
@@ -46,7 +47,7 @@ Promise
     const diameter = 16;
     const shapeThickness = 2;
     const shapeColors = {
-      blank: [255, 0, 0],
+      blank: [0, 255, 0],
       crossed: [255, 0, 0],
       shaded: [0, 0, 255]
     };
@@ -109,8 +110,10 @@ Promise
       });
     });
 
+    const imageBasename = path.basename(imagePath);
+
     // write the manipulated image to the destination folder
-    cvImage.save(`${resolvedDistPath}/im.jpg`);
+    cvImage.save(`${resolvedDistPath}/${imageBasename}`);
 
     // assemble the contents that will be written to the file
     let fileContents = '';
@@ -119,7 +122,7 @@ Promise
     });
 
     // save the statistics in a text file
-    fs.writeFileSync(`${resolvedDistPath}/im.jpg.txt`, fileContents);
+    fs.writeFileSync(`${resolvedDistPath}/${imageBasename}.txt`, fileContents);
   })
   .catch((err) => console.log(err))
   ;
