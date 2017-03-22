@@ -3,7 +3,10 @@
   "version": "1.0.0-alpha1",
   "description": "CMSC 265 - SET Document Image Processing",
   "main": "index.js",
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ecsnavarretemit/cmsc265-set-document-image-processing-js.git"
+  },
   "author": "Exequiel Ceasar Navarrete <esnavarrete1@up.edu.ph>",
   "license": "MIT",
   "scripts": {
