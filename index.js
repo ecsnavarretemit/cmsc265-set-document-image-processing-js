@@ -26,7 +26,7 @@ const diameter = 16;
 const shapeThickness = 2;
 const shapeColors = {
   blank: [0, 255, 0], // green
-  crossed: [255, 0, 0], // blue
+  crossed: [0, 255, 0], // green
   shaded: [0, 0, 255], // red
 };
 
