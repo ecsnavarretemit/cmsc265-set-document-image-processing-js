@@ -1,8 +1,10 @@
 # CMSC 265 Exercise 6 - SET Document Image Processing
 
+[![Build Status](https://travis-ci.org/ecsnavarretemit/cmsc265-set-document-image-processing-js.svg?branch=master)](https://travis-ci.org/ecsnavarretemit/cmsc265-set-document-image-processing-js)
+
 ## Requirements
 
-1. Node.js 6.x.x or greater (Node.js 6.9.x or greater is recommended)
+1. Node.js 6.9.x or greater (Node.js 6.10.x or greater is recommended)
 2. Python 2.x.x (Python 2.7.x or greater is recommended)
 3. OpenCV 3
 
