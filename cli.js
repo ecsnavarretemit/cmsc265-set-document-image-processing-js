@@ -22,7 +22,7 @@ let resolvedCoordsDataFile;
 
 // assemble the program
 program
-  .version('1.0.1')
+  .version('1.0.2')
   .arguments('<input_images_dir> <output_directory> <coords_data_file>')
   .option('-exts, --extensions <extensions>', 'Image file extension to be allowed. Defaults to jpg and png images.', listString, ['jpg', 'png'])
   .action((inputDirectory, outputDirectory, coordsDataFile) => {
