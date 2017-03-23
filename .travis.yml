@@ -22,6 +22,7 @@ branches:
 
 before_install:
  - sudo apt-get update
+ - yarn install
 
 script:
  - npm rebuild opencv
