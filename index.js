@@ -23,6 +23,7 @@ imageProcessor(resolvedImgsPath, resolvedDistPath, coordsDataFile)
     // show log info
     console.log(`Processing images done. Output files on: ${resolvedDistPath}`);
   })
+  .catch(err => console.error(`Error: ${err.message}`))
   ;
 
 

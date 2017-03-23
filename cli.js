@@ -63,12 +63,17 @@ if (!fs.existsSync(resolvedCoordsDataFile)) {
   process.exit(1);
 }
 
-// process the images
-imageProcessor(resolvedInputDirectory, resolvedOutputDirectory, resolvedCoordsDataFile, {
+const options = {
   extensions: program.extensions,
-}).then(() => {
-  // show log info
-  console.log(`Processing images done. Output files on: ${resolvedOutputDirectory}`);
-});
+};
+
+// process the images
+imageProcessor(resolvedInputDirectory, resolvedOutputDirectory, resolvedCoordsDataFile, options)
+  .then(() => {
+    // show log info
+    console.log(`Processing images done. Output files on: ${resolvedOutputDirectory}`);
+  })
+  .catch(err => console.error(`Error: ${err.message}`))
+  ;
 
 
