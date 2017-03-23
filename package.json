@@ -11,6 +11,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
+    "fresh-start": "rm -rf out; node index.js",
     "test": "NODE_ENV=test mocha 'lib/**/*.spec.js'"
   },
   "bin": {
