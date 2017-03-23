@@ -22,7 +22,6 @@ branches:
 
 before_install:
  - sudo apt-get update
- - which yarn
  - npm install -g yarn
 
 script:
