@@ -12,6 +12,10 @@ const path = require('path');
 const program = require('commander');
 const imageProcessor = require('./lib/image-processor');
 
+function listString(val) {
+  return val.split(',').map(String);
+}
+
 let resolvedInputDirectory;
 let resolvedOutputDirectory;
 let resolvedCoordsDataFile;
@@ -20,6 +24,7 @@ let resolvedCoordsDataFile;
 program
   .version('1.0.0')
   .arguments('<input_images_dir> <output_directory> <coords_data_file>')
+  .option('-exts, --extensions <extensions>', 'Image file extension to be allowed. Defaults to jpg and png images.', listString, ['jpg', 'png'])
   .action((inputDirectory, outputDirectory, coordsDataFile) => {
     resolvedInputDirectory = path.join(process.cwd(), inputDirectory);
     resolvedOutputDirectory = path.join(process.cwd(), outputDirectory);
@@ -59,11 +64,11 @@ if (!fs.existsSync(resolvedCoordsDataFile)) {
 }
 
 // process the images
-imageProcessor(resolvedInputDirectory, resolvedOutputDirectory, resolvedCoordsDataFile)
-  .then(() => {
-    // show log info
-    console.log(`Processing images done. Output files on: ${resolvedOutputDirectory}`);
-  })
-  ;
+imageProcessor(resolvedInputDirectory, resolvedOutputDirectory, resolvedCoordsDataFile, {
+  extensions: program.extensions,
+}).then(() => {
+  // show log info
+  console.log(`Processing images done. Output files on: ${resolvedOutputDirectory}`);
+});
 
 
