@@ -2,7 +2,7 @@
 
 ## Requirements
 
-1. Node.js 6.x.x or greater (Node.js 6.9.x or greater is recommended)
+1. Node.js 6.9.x or greater (Node.js 6.10.x or greater is recommended)
 2. Python 2.x.x (Python 2.7.x or greater is recommended)
 3. OpenCV 3
 
