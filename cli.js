@@ -9,6 +9,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const pkg = require('./package.json');
 const program = require('commander');
 const imageProcessor = require('./lib/image-processor');
 
@@ -22,7 +23,7 @@ let resolvedCoordsDataFile;
 
 // assemble the program
 program
-  .version('1.0.2')
+  .version(pkg.version)
   .arguments('<input_images_dir> <output_directory> <coords_data_file>')
   .option('-exts, --extensions <extensions>', 'Image file extension to be allowed. Defaults to jpg and png images.', listString, ['jpg', 'png'])
   .action((inputDirectory, outputDirectory, coordsDataFile) => {
