@@ -1,6 +1,6 @@
 {
   "name": "cmsc265-set-document-image-processing",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CMSC 265 - SET Document Image Processing",
   "main": "index.js",
   "repository": {
@@ -24,7 +24,8 @@
     "lodash.assign": "^4.2.0",
     "lodash.chunk": "^4.2.0",
     "lodash.template": "^4.4.0",
-    "opencv": "^6.0.0"
+    "opencv": "^6.0.0",
+    "progress": "^1.1.8"
   },
   "devDependencies": {
     "chai": "^3.5.0",
